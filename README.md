@@ -21,4 +21,5 @@ PyTorch 1.4.0
 import adai_optim
 
 #You may use it as a standard Pytorch optimizer.
+
 optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03)
