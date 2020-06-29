@@ -9,11 +9,9 @@ The algorithms are based on the paper:
 
 # The environment is as bellow:
 
-Ubuntu 18.04.4 LTS
-
 Python 3.7.3 
 
-PyTorch 1.4.0
+PyTorch >= 1.4.0
 
 
 # Code Example: 
