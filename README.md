@@ -25,7 +25,7 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
 
 # Performance
 
-Table 1. Test performance comparison. We report the mean and the standard deviations of the optimal test errors computed over three runs on CIFAR-10 and CIFAR-100, and the optimal test errors over one run on ImageNet.
+Table 1. Test performance comparison. We report the mean of the optimal test errors computed over three runs on CIFAR-10 and CIFAR-100, and the optimal test errors over one run on ImageNet.
 
 | Dataset                      | Model       | Adai                      | SGD with Momentum| 
 | :--------------------------- | :---------- | :------------------------ | :--------------- |
