@@ -19,9 +19,11 @@ PyTorch >= 1.4.0
 
 #You may use it as a standard PyTorch optimizer.
 
+```python
 import adai_optim
 
 optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03)
+```
 
 
 # Performance
