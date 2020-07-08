@@ -4,8 +4,7 @@ The Pytorch Implementation of Adaptive Inertia Methods.
 
 The algorithms are based on the paper:  
 
-"Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia".
-https://arxiv.org/abs/2006.15815
+[Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia.](https://arxiv.org/abs/2006.15815)
 
 
 # The environment is as bellow:
@@ -15,7 +14,7 @@ Python 3.7.3
 PyTorch >= 1.4.0
 
 
-# Code Example: 
+# Usage
 
 #You may use it as a standard PyTorch optimizer.
 
@@ -28,7 +27,7 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
 
 # Performance
 
-Table 1. Test performance comparison. We report the mean of the optimal test errors computed over three runs on CIFAR-10 and CIFAR-100, and the optimal test errors over one run on ImageNet. The table and settings are adopted from the original paper https://arxiv.org/abs/2006.15815.
+Table 1. Test performance comparison. We report the mean of the optimal test errors computed over three runs on CIFAR-10 and CIFAR-100, and the optimal test errors over one run on ImageNet. The table and settings are adopted from the original paper: [Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia.](https://arxiv.org/abs/2006.15815).
 
 | Dataset                      | Model       | Adai                      | SGD Momentum| Adai$^{\star}$ | Adam | AMSGrad | AdamW|
 | :--------------------------- | :---------- | :------------------------ | :--------------- | :------------------------ | :--------------- | :--------------- | :--------------- |
@@ -38,3 +37,17 @@ Table 1. Test performance comparison. We report the mean of the optimal test err
 |                              | GoogLeNet   | 20.60 | 21.05 | 22.84 | 26.63 | 27.49 | 26.24 |
 | ImageNet<span>(Top1)         | ResNet50    | 23.20 | 23.51 | 27.09 | 27.13 | 28.08 | 27.47 |
 | ImageNet<span>(Top5)         | ResNet50    | 6.62  | 6.82  | 8.89 | 9.18 | 9.48 | 9.29 |
+  
+ 
+# Citing
+
+If you use Adai or other Adai variants in your work, please cite [Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia.](https://arxiv.org/abs/2006.15815).
+
+```
+@article{xie2020adai,
+  title={Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia},
+  author={Xie, Zeke and Wang, Xinrui and Zhang, Huishuai and Sato, Issei and Sugiyama, Masashi},
+  journal={arXiv preprint arXiv:2006.15815},
+  year={2020}
+}
+```
