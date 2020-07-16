@@ -1,20 +1,10 @@
-'''
-The Pytorch Implementation of Adaptive Inertia Estimation (Adai).
-
-The algorithm is based on the paper:
-"Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia".
-
-Some codes are adopted from Pytorch:
-https://github.com/pytorch/pytorch/tree/master/torch/optim
-'''
-
 import torch
 from torch.optim.optimizer import Optimizer, required
 
-
-
 class Adai(Optimizer):
     r"""Implements Adaptive Inertia Estimation (Adai) algorithm.
+    It has be proposed in 
+    `Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia`__.
 
     Arguments:
         params (iterable): iterable of parameters to optimize or dicts defining
