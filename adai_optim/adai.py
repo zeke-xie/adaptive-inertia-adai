@@ -89,6 +89,7 @@ class Adai(Optimizer):
                 
                 exp_avg_sq_hat_sum += exp_avg_sq_hat.sum()
                 
+        # Calculate the mean of all elements in exp_avg_sq_hat
         exp_avg_sq_hat_mean = exp_avg_sq_hat_sum / param_size
         
         for group in self.param_groups:
