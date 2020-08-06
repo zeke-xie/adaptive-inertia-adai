@@ -51,7 +51,6 @@ class Adai(Optimizer):
         exp_avg_sq_hat_sum = 0.
         
         for group in self.param_groups:
-        
             for p in group['params']:
                 if p.grad is None:
                     continue
@@ -67,17 +66,14 @@ class Adai(Optimizer):
                     state['exp_avg'] = torch.zeros_like(p.data, memory_format=torch.preserve_format)
                     # Exponential moving average of squared gradient values
                     state['exp_avg_sq'] = torch.zeros_like(p.data, memory_format=torch.preserve_format)
-                    # Exponential moving average of squared gradient values with the bias correction
-                    state['exp_avg_sq_hat'] = torch.zeros_like(p.data, memory_format=torch.preserve_format)
                     # Cumulative products of beta1
                     state['beta1_prod'] = torch.ones_like(p.data, memory_format=torch.preserve_format)
                     
+                state['step'] += 1
 
                 exp_avg_sq = state['exp_avg_sq']
-                exp_avg_sq_hat = state['exp_avg_sq_hat']
                 beta0, beta2 = group['betas']
 
-                state['step'] += 1
                 bias_correction2 = 1 - beta2 ** state['step']
 
                 if group['weight_decay'] != 0:
@@ -85,13 +81,12 @@ class Adai(Optimizer):
                     
                 exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
                 
-                exp_avg_sq_hat.mul_(0.).add_(exp_avg_sq / bias_correction2)
+                exp_avg_sq_hat_sum += exp_avg_sq.sum() / bias_correction2
                 
-                exp_avg_sq_hat_sum += exp_avg_sq_hat.sum()
-                
-            # Calculate the mean of all elements in exp_avg_sq_hat
-            exp_avg_sq_hat_mean = exp_avg_sq_hat_sum / param_size
-        
+        # Calculate the mean of all elements in exp_avg_sq_hat
+        exp_avg_sq_hat_mean = exp_avg_sq_hat_sum / param_size
+
+        for group in self.param_groups:
             for p in group['params']:
                 if p.grad is None:
                     continue
@@ -100,9 +95,13 @@ class Adai(Optimizer):
                 state = self.state[p]
 
                 exp_avg = state['exp_avg']
-                exp_avg_sq_hat = state['exp_avg_sq_hat']
+                exp_avg_sq = state['exp_avg_sq']
                 beta1_prod = state['beta1_prod']
                 beta0, beta2 = group['betas']
+
+                bias_correction2 = 1 - beta2 ** state['step']
+
+                exp_avg_sq_hat = exp_avg_sq / bias_correction2
                 beta1 = (1. - (exp_avg_sq_hat / exp_avg_sq_hat_mean).mul(beta0)).clamp(0., 1 - group['eps'])
                 
                 beta1_prod.mul_(beta1)
