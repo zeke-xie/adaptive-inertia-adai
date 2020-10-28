@@ -77,9 +77,9 @@ class Adai(Optimizer):
                 bias_correction2 = 1 - beta2 ** state['step']
 
                 if group['weight_decay'] != 0:
-                    grad.add_(group['weight_decay'], p.data)
+                    grad.add_(p.data, alpha=group['weight_decay'])
                     
-                exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+                exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)
                 
                 exp_avg_sq_hat_sum += exp_avg_sq.sum() / bias_correction2
                 
@@ -110,7 +110,6 @@ class Adai(Optimizer):
                 exp_avg.mul_(beta1).addcmul_(1 - beta1, grad)
                 exp_avg_hat = exp_avg / bias_correction1
                 
-                step_size = group['lr'] 
-                p.data.add_(-step_size, exp_avg_hat)
+                p.data.add_(exp_avg_hat, alpha=-group['lr'])
 
         return loss
