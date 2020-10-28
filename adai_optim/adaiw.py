@@ -6,8 +6,9 @@ from torch.optim.optimizer import Optimizer, required
 class AdaiW(Optimizer):
     r"""Implements Adai with decoupled weight decay (AdaiW).
     It is based on  
-    `Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia`__.
-
+    `Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia`
+    and
+    `Stable Weight Decay: Fixing Weight Decay in Deep Learning Librariess`__.
     Arguments:
         params (iterable): iterable of parameters to optimize or dicts defining
             parameter groups
@@ -76,7 +77,7 @@ class AdaiW(Optimizer):
                 state['step'] += 1
                 bias_correction2 = 1 - beta2 ** state['step']
 
-                exp_avg_sq.mul_(beta2).addcmul_(1 - beta2, grad, grad)
+                exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)
                 
                 exp_avg_sq_hat = exp_avg_sq / bias_correction2
                 
@@ -113,7 +114,6 @@ class AdaiW(Optimizer):
                 exp_avg.mul_(beta1).addcmul_(1 - beta1, grad)
                 exp_avg_hat = exp_avg.div(bias_correction1) 
                 
-                step_size = group['lr'] 
-                p.data.add_(-step_size, exp_avg_hat)
+                p.data.add_(exp_avg_hat, alpha=-group['lr'])
 
         return loss
