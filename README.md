@@ -2,9 +2,14 @@
 
 The Pytorch Implementation of Adaptive Inertia Methods. 
 
-The algorithms are based on the paper:  
+
+Adai is proposed in our paper:  
 
 [Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia.](https://arxiv.org/abs/2006.15815)
+
+We design a novel adaptive optimizer named Adaptive Inertia Estimation (Adai), which uses parameter-wise adaptive inertia to accelerate training and provably favors flat minima as much as SGD. 
+
+Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants. 
 
 
 # The environment is as bellow:
