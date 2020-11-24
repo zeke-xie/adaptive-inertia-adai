@@ -26,7 +26,7 @@ PyTorch >= 1.4.0
 ```python
 import adai_optim
 
-optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03)
+optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4)
 ```
 
 # Test performance
