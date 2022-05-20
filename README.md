@@ -3,13 +3,13 @@
 The Pytorch Implementation of Adaptive Inertia Methods. 
 
 
-Adaptive Inertia Optimization is proposed in our paper:  
+Adaptive Inertia Optimization is proposed in our preprint:  
 
 [Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia](https://arxiv.org/abs/2006.15815).
 
-We design a novel adaptive optimizer named Adaptive Inertia Estimation (Adai), which uses parameter-wise adaptive inertia to accelerate training and provably favors flat minima as much as SGD. 
+This work is accepted as a Long Presentation paper at ICML 2022. A camera-ready version will appear soon.
 
-Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants. 
+In this, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. 
 
 
 # The environment is as bellow:
@@ -43,13 +43,13 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
  
 # Citing
 
-If you use Adai or other Adai variants in your work, please cite [Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia](https://arxiv.org/abs/2006.15815).
+If you use Adai or other Adai variants in your work, please cite [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
 ```
-@article{xie2020adai,
-  title={Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia},
+@inproceedings{xie2022adaptive,
+  title={Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum},
   author={Xie, Zeke and Wang, Xinrui and Zhang, Huishuai and Sato, Issei and Sugiyama, Masashi},
-  journal={arXiv preprint arXiv:2006.15815},
-  year={2020}
+  booktitle={International Conference on Machine Learning},
+  year={2022}
 }
 ```
