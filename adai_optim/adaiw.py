@@ -5,10 +5,8 @@ from torch.optim.optimizer import Optimizer, required
 
 class AdaiW(Optimizer):
     r"""Implements Adai with decoupled weight decay (AdaiW).
-    It is based on  
-    `Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia`
-    and
-    `Stable Weight Decay: Fixing Weight Decay in Deep Learning Librariess`__.
+    It is proposed in the ICML2022 paper  
+    `Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum`
     Arguments:
         params (iterable): iterable of parameters to optimize or dicts defining
             parameter groups
