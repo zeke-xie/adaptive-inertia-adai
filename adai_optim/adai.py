@@ -3,8 +3,8 @@ from torch.optim.optimizer import Optimizer, required
 
 class Adai(Optimizer):
     r"""Implements Adaptive Inertia Estimation (Adai) algorithm.
-    It has be proposed in 
-    `Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia`__.
+    It is proposed in the ICML2022 paper  
+    `Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum`.
 
     Arguments:
         params (iterable): iterable of parameters to optimize or dicts defining
