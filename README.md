@@ -5,11 +5,13 @@ The Pytorch Implementation of Adaptive Inertia Methods.
 
 Adaptive Inertia Optimization is proposed in our preprint:  
 
-[Adai: Separating the Effects of Adaptive Learning Rate and Momentum Inertia](https://arxiv.org/abs/2006.15815).
+[Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
-This work is accepted as a Long Presentation paper at ICML 2022. A camera-ready version will appear soon.
+This work has been accepted as a Long Presentation paper at ICML 2022. A camera-ready version will appear soon.
 
-In this, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. 
+In this, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD.
+
+Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. 
 
 
 # The environment is as bellow:
