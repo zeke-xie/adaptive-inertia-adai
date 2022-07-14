@@ -3,13 +3,13 @@
 The Pytorch Implementation of Adaptive Inertia Methods. 
 
 
-Adaptive Inertia Optimization is proposed in our preprint:  
+Adaptive Inertia Optimization is proposed in our work:  
 
 [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
-This work has been accepted as a Long Presentation paper at ICML 2022. A camera-ready version will appear soon.
+This work has been accepted as a **Long Presentation paper (Acceptance Rate ~ 2%) at ICML 2022**.
 
-In this, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD.
+In this work, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Adai combines the advantages of Adam and SGD on saddle-point escaping and minima selection, respectively.
 
 Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. 
 
@@ -48,10 +48,13 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
 If you use Adai or other Adai variants in your work, please cite [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
 ```
-@inproceedings{xie2022adaptive,
-  title={Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum},
-  author={Xie, Zeke and Wang, Xinrui and Zhang, Huishuai and Sato, Issei and Sugiyama, Masashi},
-  booktitle={International Conference on Machine Learning},
-  year={2022}
+@InProceedings{xie2022adaptive,
+  title = 	 {Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum},
+  author =       {Xie, Zeke and Wang, Xinrui and Zhang, Huishuai and Sato, Issei and Sugiyama, Masashi},
+  booktitle = 	 {Proceedings of the 39th International Conference on Machine Learning},
+  pages = 	 {24430--24459},
+  year = 	 {2022}
+  volume = 	 {162},
+  series = 	 {Proceedings of Machine Learning Research}
 }
 ```
