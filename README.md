@@ -7,7 +7,7 @@ Adaptive Inertia Optimization is proposed in our work:
 
 [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
-This work has been accepted as a **Long Presentation paper (Acceptance Rate ~ 2%) at ICML 2022**.
+This work has been accepted as a **Long Oral paper (Acceptance Rate ~ 2%) at ICML 2022**.
 
 In this work, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Adai combines the advantages of Adam and SGD on saddle-point escaping and minima selection, respectively.
 
@@ -36,6 +36,8 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
 The recommended learning rate of Adai is equal to the choice of SGD or 10 times the choice of SGD Momentum (beta=0.9).
 
 The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momentum.
+
+AdaiW adoptes decoupled weight decay instead of L2 regularization. Thus, the optimal weight decay of AdaiW depends on the learning rate choice.
 
 # Test performance
 
