@@ -23,13 +23,19 @@ PyTorch >= 1.4.0
 
 # Usage
 
-#You may use it as a standard PyTorch optimizer.
+You may use it as a standard PyTorch optimizer. 
 
 ```python
 import adai_optim
 
 optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4)
 ```
+
+# Hyperparameters
+
+The recommended learning rate of Adai is equal to the choice of SGD or 10 times the choice of SGD Momentum (beta=0.9).
+
+The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momentum.
 
 # Test performance
 
