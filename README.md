@@ -35,9 +35,14 @@ optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-0
 
 The recommended learning rate of Adai is equal to the choice of SGD or 10 times the choice of SGD Momentum (beta=0.9).
 
-The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momentum.
+The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momentum, usually 1e-4 or 5e-4 for CNNs.
 
 AdaiW adoptes decoupled weight decay instead of L2 regularization. Thus, the optimal weight decay of AdaiW depends on the learning rate choice.
+
+The recommended hyperparameters for Transformers are not avaliable yet. 
+
+In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD.
+
 
 # Test performance
 
