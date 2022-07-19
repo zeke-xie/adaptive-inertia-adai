@@ -43,9 +43,14 @@ The recommended hyperparameters for Transformers are not avaliable yet.
 
 In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD (no Momentum).
 
+# Theoretical Comparison
+
+|               | SGD  | Adaptive Learning Rate |  Adaptive Inertia |
+| :------------ |:---------------:| -----:| -----:|
+| Saddle-Escaping | Slow &cross; | Fast &check;| Fast &check; |
+| Minima Selection| Flat &check;| Sharp &cross;| Flat &check; |
 
 # Test performance
-
 
 
 | Dataset   | Model       | AdaiW                    | Adai                     | SGD M                | Adam                 | AMSGrad              | AdamW                | AdaBound             | Padam                | Yogi                 | RAdam                |
