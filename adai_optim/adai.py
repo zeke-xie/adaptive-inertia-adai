@@ -3,7 +3,7 @@ from torch.optim.optimizer import Optimizer, required
 
 class Adai(Optimizer):
     r"""Implements Adaptive Inertia Estimation (Adai) algorithm.
-    It is proposed in the ICML2022 paper  
+    It is proposed in the ICML2022 Oral paper  
     `Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum`.
 
     Arguments:
@@ -13,11 +13,11 @@ class Adai(Optimizer):
         betas (Tuple[float, float], optional): beta0 and beta2 (default: (0.1, 0.99))
         eps (float, optional): the inertia bound (default: 1e-03)
         weight_decay (float, optional): weight decay (L2 penalty) (default: 0)
-
+        decoupled (boolean, optional): decoupled weight decay (default: False)
     """
 
     def __init__(self, params, lr=required, betas=(0.1, 0.99), eps=1e-03,
-                 weight_decay=0):
+                 weight_decay=0, decoupled=False):
         if lr is not required and lr < 0.0:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if not 0.0 <= eps:
@@ -28,12 +28,14 @@ class Adai(Optimizer):
             raise ValueError("Invalid beta parameter at index 1: {}".format(betas[1]))
         if not 0.0 <= weight_decay:
             raise ValueError("Invalid weight_decay value: {}".format(weight_decay))
-        defaults = dict(lr=lr, betas=betas, eps=eps, weight_decay=weight_decay)
+        defaults = dict(lr=lr, betas=betas, eps=eps, weight_decay=weight_decay, decoupled=decoupled)
         super(Adai, self).__init__(params, defaults)
     
 
     def __setstate__(self, state):
         super(Adai, self).__setstate__(state)
+        for group in self.param_groups:
+            group.setdefault('decoupled', False)
             
     @torch.no_grad()
     def step(self, closure=None):
@@ -76,8 +78,10 @@ class Adai(Optimizer):
 
                 bias_correction2 = 1 - beta2 ** state['step']
 
-                if group['weight_decay'] != 0:
+                if group['weight_decay'] != 0 and group['decoupled'] == False:
                     grad.add_(p.data, alpha=group['weight_decay'])
+                elif group['weight_decay'] != 0 and group['decoupled'] == True:
+                    p.data.mul_(1 - group['lr'] * group['weight_decay'])
                     
                 exp_avg_sq.mul_(beta2).addcmul_(grad, grad, value=1 - beta2)
                 
