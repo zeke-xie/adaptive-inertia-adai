@@ -7,7 +7,7 @@ Adaptive Inertia Optimization is proposed in our work:
 
 [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
-This work has been accepted as a **Long Oral paper (Acceptance Rate ~ 2%) at ICML 2022**.
+This work has been accepted as **ICML2022 Oral (Acceptance Rate ~ 2%)**.
 
 In this work, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Adai combines the advantages of Adam and SGD on saddle-point escaping and minima selection, respectively.
 
@@ -28,7 +28,7 @@ You may use it as a standard PyTorch optimizer.
 ```python
 import adai_optim
 
-optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4)
+optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4, decoupled=False)
 ```
 
 # Hyperparameters
