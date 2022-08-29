@@ -3,7 +3,7 @@
 The Pytorch Implementation of Adaptive Inertia Methods. 
 
 
-Adaptive Inertia Optimization is proposed in our work:  
+Adaptive Inertia Optimization was proposed in our work:  
 
 [Adaptive Inertia: Disentangling the Effects of Adaptive Learning Rate and Momentum](https://arxiv.org/abs/2006.15815).
 
@@ -28,7 +28,9 @@ You may use it as a standard PyTorch optimizer.
 ```python
 import adai_optim
 
-optimizer = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4, decoupled=False)
+Adai = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4, decoupled=False)
+AdaiW = adai_optim.Adai(net.parameters(), lr=lr, betas=(0.1, 0.99), eps=1e-03, weight_decay=5e-4, decoupled=True)
+
 ```
 
 # Hyperparameters
