@@ -45,6 +45,18 @@ The recommended hyperparameters for Transformers are not avaliable yet.
 
 In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD (no Momentum).
 
+# AdaiV2
+
+AdaiV2 is a novel optimizer, a generalized variant of the original Adai in our paper. Adai is a special case of AdaiV2 with dampening=1. 
+
+If we let dampening<1, AdaiV2 will show some Adam-like behaviors by **beta3 > 1 - beta1** instead of Adaptive Learning Rate. 
+
+We notice that, in some tasks (e.g. Transformers), Adam are still powerful. AdaiV2 provides an easy way to fuse two adaptive optimization mechanisms together.
+
+We add the dampening hyperparameter into Adai. Setting dampening<1 can employ adaptive moments and adaptive inertia at the same time. 
+
+Note that AdaiV2 is in testing phase. We may continue to upgrade it.
+
 # Theoretical Comparison
 
 |               | SGD  | Adaptive Learning Rate |  Adaptive Inertia |
