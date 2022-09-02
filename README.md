@@ -49,7 +49,7 @@ In principle, the optimal hyperparameter choice of Adai should be close to the o
 
 AdaiV2 is a novel optimizer, a generalized variant of the original Adai in our paper. Adai is a special case of AdaiV2 with dampening=1. 
 
-If we let dampening<1, AdaiV2 will show some Adam-like behaviors by **beta3 > 1 - beta1** instead of Adaptive Learning Rate. 
+If we let dampening<1, AdaiV2 will show some adaptive-moment behavior. This adaptive-moment behavior is achived by $E[m] = E[g] * (1 - beta1)^{dampening -1 }$ instead of Adaptive Learning Rate. The adaptive factor $(1 - beta1)^{dampening -1 }$ is large along the flat direction.
 
 We notice that, in some tasks (e.g. Transformers), Adam are still powerful. AdaiV2 provides an easy way to fuse two adaptive optimization mechanisms together.
 
