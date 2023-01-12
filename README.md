@@ -41,9 +41,10 @@ The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momen
 
 AdaiW adoptes decoupled weight decay instead of L2 regularization. Thus, the optimal weight decay of AdaiW depends on the learning rate choice.
 
-The recommended hyperparameters for Transformers are not avaliable yet.
-
 In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD (no Momentum).
+
+
+The recommended hyperparameters for Transformers are not avaliable yet. In our recent experiments on Transformers, the original Adai often works better than SGD but worse than Adam. Maybe some Adai variants are required for training Transformers.
 
 # AdaiV2
 
