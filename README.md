@@ -11,8 +11,7 @@ This work has been accepted as **ICML2022 Oral (Acceptance Rate ~ 2%)**.
 
 In this work, we design a novel adaptive optimization method named Adaptive Inertia (Adai), which uses parameter-wise inertia (the momentum hyperparameter as a vector) to accelerate saddle-point escaping and provably select flat minima as well as SGD. Adai combines the advantages of Adam and SGD on saddle-point escaping and minima selection, respectively.
 
-Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. 
-
+Our experiments demonstrate that Adai can significantly outperform SGD and existing Adam variants for various DNNs where flat minima are desired. We especially recommend Adai for training of CNNs.
 
 # The environment is as bellow:
 
@@ -42,7 +41,6 @@ The recommended weight decay of Adai is euqal to the choice of SGD and SGD Momen
 AdaiW adoptes decoupled weight decay instead of L2 regularization. Thus, the optimal weight decay of AdaiW depends on the learning rate choice.
 
 In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD (no Momentum).
-
 
 The recommended hyperparameters for Transformers are not avaliable yet. In our recent experiments on Transformers, the original Adai often works better than SGD but worse than Adam. Maybe some Adai variants are required for training Transformers.
 
