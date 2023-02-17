@@ -42,7 +42,7 @@ AdaiW adoptes decoupled weight decay instead of L2 regularization. Thus, the opt
 
 In principle, the optimal hyperparameter choice of Adai should be close to the optimal hyperparameter choice of SGD (no Momentum).
 
-The recommended hyperparameters for Transformers are not avaliable yet. In our recent experiments on Transformers, the original Adai often works better than SGD but worse than Adam. Maybe some Adai variants are required for training Transformers.
+The recommended hyperparameters for Transformers are not avaliable yet. In our recent experiments on Transformers, the original Adai often works better than SGD but worse than Adam. Maybe some Adai variants with stronger adaptivity are required for training Transformers.
 
 # AdaiV2
 
